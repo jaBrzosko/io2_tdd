@@ -3,7 +3,7 @@ namespace TestProject
 {
     public class AddTest
     {
-        private StringCalculator _calculator;
+        private readonly StringCalculator _calculator;
         public AddTest()
         {
             _calculator = new StringCalculator();
@@ -24,6 +24,22 @@ namespace TestProject
         [InlineData("-2", -2)]
         [InlineData("-9999", -9999)]
         public void WhenProvidedOneNumber_ShouldReturnThisNumber(string input, int expected)
+        {
+            int answer = _calculator.Add(input);
+            Assert.Equal(expected, answer);
+        }
+
+        [Theory]
+        [InlineData("2,3", 5)]
+        [InlineData("0,0", 0)]
+        [InlineData("12,34", 46)]
+        [InlineData("100,0", 100)]
+        [InlineData("-2,3", 1)]
+        [InlineData("-10,10", 0)]
+        [InlineData("-6,-9", -15)]
+        [InlineData("-12,3", -9)]
+        [InlineData("-100,-465", -565)]
+        public void WhenTwoNumbersProvided_ShouldReturnTheirSum(string input, int expected)
         {
             int answer = _calculator.Add(input);
             Assert.Equal(expected, answer);
