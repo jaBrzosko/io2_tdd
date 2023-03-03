@@ -10,15 +10,32 @@ namespace ClassLibrary
             if (string.IsNullOrEmpty(numbers))
                 return 0;
             if(int.TryParse(numbers, out int singleNumber))
-                return singleNumber;
-            if(numbers.Contains(","))
             {
-                var separated = numbers.Split(',');
-                if (separated.Length == 2 && int.TryParse(separated[0], out int a) && int.TryParse(separated[1], out int b))
-                    return a + b;
+                if (singleNumber < 0)
+                    throw new ArgumentOutOfRangeException();
+                else if (singleNumber > 1000)
+                    return 0;
+                return singleNumber;
             }
 
-            return 0;
+            var separated = numbers.Split('\n', ',');
+            int a;
+            int sum = 0;
+            for(int i = 0; i < separated.Length;i++)
+            {
+                if (int.TryParse(separated[i], out a))
+                {
+                    if (a < 0)
+                        throw new ArgumentOutOfRangeException();
+                    else if (a > 1000)
+                        continue;
+                    sum += a;
+                }
+                else
+                    return 0;
+            }
+            return sum;
         }
+
     }
 }
