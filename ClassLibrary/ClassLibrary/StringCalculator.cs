@@ -9,6 +9,8 @@ namespace ClassLibrary
         {
             if (string.IsNullOrEmpty(numbers))
                 return 0;
+            if(int.TryParse(numbers, out int singleNumber))
+                return singleNumber;
             return 0;
         }
     }
