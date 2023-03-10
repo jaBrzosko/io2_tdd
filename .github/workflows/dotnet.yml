@@ -21,7 +21,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ClassLibrary/ClassLibrary/ClassLibrary.csproj
     - name: Build
       run: dotnet build ClassLibrary/ClassLibrary/ClassLibrary.csproj --no-restore 
     - name: Test
