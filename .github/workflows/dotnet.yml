@@ -25,4 +25,4 @@ jobs:
     - name: Build
       run: dotnet build ClassLibrary/ClassLibrary/ClassLibrary.csproj --no-restore 
     - name: Test
-      run: dotnet test TestProject/TestProject.csproj --no-build --verbosity normal
+      run: dotnet test TestProject/TestProject.csproj --verbosity normal
